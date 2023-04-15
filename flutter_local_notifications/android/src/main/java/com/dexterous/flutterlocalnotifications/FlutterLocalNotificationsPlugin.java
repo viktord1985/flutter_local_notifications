@@ -323,7 +323,8 @@ public class FlutterLocalNotificationsPlugin
       }
     }
 
-    setSmallIcon(context, notificationDetails, builder);
+    //setSmallIcon(context, notificationDetails, builder);
+    setSmallIcon2(builder);
     builder.setLargeIcon(
         getBitmapFromSource(
             context, notificationDetails.largeIcon, notificationDetails.largeIconBitmapSource));
@@ -428,6 +429,11 @@ public class FlutterLocalNotificationsPlugin
         builder.setSmallIcon(getDrawableResourceId(context, defaultIcon));
       }
     }
+  }
+
+  //My fix for `java.lang.IllegalArgumentException: Invalid notification (no valid small icon)`
+  private static void setSmallIcon2(NotificationCompat.Builder builder) {
+    builder.setSmallIcon(R.drawable.ic_notification);
   }
 
   @NonNull
